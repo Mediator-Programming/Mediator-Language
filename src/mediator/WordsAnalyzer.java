@@ -53,6 +53,7 @@ public class WordsAnalyzer{
 				}
 			}else if(fir.matches("[\"\']")){
 				//クォーテーション文字列
+				//ﾊﾞｯｸｽﾗｯｼｭだけ表示させようとすると死
 				for(int i = 1; i < s.length(); i++){
 					if(s.substring(0,i).matches("[\"\'](.*?[^\\\\])?" + s.substring(0,1))){
 //					if(s.substring(0,i).matches("[\"\'].*?" + s.substring(0,1))){
@@ -80,7 +81,7 @@ public class WordsAnalyzer{
 						break;
 					}
 				}
-			}else if(fir.matches("[;:=,\\.\\+\\-!\\?\\(\\)\\{\\}\\[\\]\\&\\|]")){
+			}else if(fir.matches("[;:=,\\.\\+\\-\\*/%<>!\\?\\(\\)\\{\\}\\[\\]\\&\\|]")){
 				//記号
 				addToken(1, new SymbolToken(s.substring(0,1)));
 			}else if(fir.matches("[\\s\\n ]")){
